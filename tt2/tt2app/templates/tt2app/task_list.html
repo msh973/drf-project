@@ -1,0 +1,28 @@
+{% extends 'tt2app/base.html' %}
+
+{% block title %} Tasks List {% endblock %}
+
+{% block content %}
+
+    <table class="table-primary">
+
+        {% for task in object_list %}
+        <tr>
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }}</td>
+            <td>{% if task.completed %}
+                    <span> &#10003; </span>
+                {% else %}
+                    <span> &#10007; </span>
+                {% endif %}
+            </td>
+        </tr>
+
+        {% empty %}
+        <div class="jumbotron">
+            <p class="alert alert-danger">No Tasks!</p>
+        </div>
+
+        {% endfor %}
+    </table>
+{% endblock %}
